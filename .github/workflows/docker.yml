@@ -1,0 +1,12 @@
+- name: Compute lowercase image name
+  id: names
+  run: echo "repo_lc=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
+- name: Build
+  run: |
+    IMAGE="ghcr.io/${{ steps.names.outputs.repo_lc }}:latest"
+    docker build -t "$IMAGE" .
+- name: Push
+  run: |
+    IMAGE="ghcr.io/${{ steps.names.outputs.repo_lc }}:latest"
+    docker push "$IMAGE"
+
