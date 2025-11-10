@@ -1,0 +1,9 @@
+.git
+.work
+.nextflow*
+results/
+data/
+*.fastq*
+*.bam
+*.cram
+*.pdf
